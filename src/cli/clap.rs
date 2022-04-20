@@ -257,7 +257,7 @@ The same function as found in `playback` will be called.",
     )
     .group(
       ArgGroup::with_name("contexts")
-        .args(&["track", "artist", "playlist", "album", "show"])
+        .args(&["track", "artist", "playlist", "album", "show","liked"])//Irving
         .multiple(false),
     )
     .group(

@@ -543,8 +543,19 @@ impl<'a> CliApp<'a> {
             return Err(anyhow!("no shows with name '{}'", name));
           }
         }
+        Type::Liked => {
+          if let Some(r) = &results.artists {
+            let p = &r.items[0];
+            // For a random song, create a random offset
+            p.uri.clone()
+          } else {
+            return Err(anyhow!("no Liked lists with name '{}'", name));
+          }
+        }
         Type::Playlist => {
           if let Some(r) = &results.playlists {
+            let try_result =  results;
+            let _try1 = r;
             let p = &r.items[0];
             // For a random song, create a random offset
             p.uri.clone()
@@ -557,6 +568,7 @@ impl<'a> CliApp<'a> {
     };
 
     // Play or queue the uri
+
     self.play_uri(uri, queue, random).await;
 
     Ok(())

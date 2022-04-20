@@ -33,6 +33,8 @@ impl Type {
       Self::Album
     } else if m.is_present("show") {
       Self::Show
+    }else if m.is_present("liked") {  // Irving
+      Self::Liked
     }
     // Enforced by clap
     else {
